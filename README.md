@@ -14,6 +14,10 @@ NSU Masters Project for Machine Learning Course
 
 * Install **venv** -> **venv** ships with python3 by default
 
+* Check Python version -> 
+        
+        $ python --version
+
 ### Using **venv**
 * creation of new **venv** Environment
 
