@@ -42,3 +42,5 @@ Theano==1.0.4
 urllib3==1.25.7
 Werkzeug==0.16.0
 wrapt==1.11.2
+opencv_python==4.1.2.30
+Pillow==6.2.1
