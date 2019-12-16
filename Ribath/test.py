@@ -3,35 +3,38 @@ from PIL import Image
 
 property_id = int(cv2.CAP_PROP_FRAME_COUNT)
 
-# cap1 = cv2.VideoCapture("vid1")
-# length1 = int(cv2.VideoCapture.get(cap1, property_id))
-# print( length1 )
-#
-# cap2 = cv2.VideoCapture("vid2")
-# length2 = int(cv2.VideoCapture.get(cap2, property_id))
-# print( length2 )
-#
-# success,image = cap1.read()
-# count = 0;
-# while success:
-#     success,image = cap1.read()
-#     cv2.imwrite("imgFromVid1/frame%d.jpg" % count, image)     # save frame as JPEG file
-#     if cv2.waitKey(10) == 27:                     # exit if Escape is hit
-#         break
-#     if count == length1-2:
-#         break
-#     count += 1
-#
-# success,image = cap2.read()
-# count = 0;
-# while success:
-#     success,image = cap2.read()
-#     cv2.imwrite("imgFromVid2/frame%d.jpg" % count, image)     # save frame as JPEG file
-#     if cv2.waitKey(10) == 27:                     # exit if Escape is hit
-#         break
-#     if count == length2-2:
-#         break
-#     count += 1
+cap1 = cv2.VideoCapture("vid1")
+length1 = int(cv2.VideoCapture.get(cap1, property_id))
+print( length1 )
+
+cap2 = cv2.VideoCapture("vid2")
+length2 = int(cv2.VideoCapture.get(cap2, property_id))
+print( length2 )
+
+success,image = cap1.read()
+count = 0;
+while success:
+    success,image = cap1.read()
+
+    b = cv2.resize(image,(640, 360),fx=0,fy=0, interpolation = cv2.INTER_CUBIC)
+    cv2.imwrite("imgFromVid1/frame%d.jpg" % count, b)     # save frame as JPEG file
+    if cv2.waitKey(10) == 27:                     # exit if Escape is hit
+        break
+    if count == length1-2:
+        break
+    count += 1
+
+success,image = cap2.read()
+count = 0;
+while success:
+    success,image = cap2.read()
+    b = cv2.resize(image,(640, 360),fx=0,fy=0, interpolation = cv2.INTER_CUBIC)
+    cv2.imwrite("imgFromVid2/frame%d.jpg" % count, b)     # save frame as JPEG file
+    if cv2.waitKey(10) == 27:                     # exit if Escape is hit
+        break
+    if count == length2-2:
+        break
+    count += 1
 
 img = cv2.imread('imgFromVid2/frame12.jpg')
 dimensions = img.shape
@@ -42,9 +45,6 @@ print(dimensions)
 # pixel_values = list(im.getdata())
 # print(pixel_values[width])
 
-im = Image.open('musk.jpg') # Can be many different formats.
-pix = im.load()
-print (im.size)  # Get the width and hight of the image for iterating over
 countX = 0
 countY = 0
 # matrix = [[0]*640]*360
