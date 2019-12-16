@@ -16,8 +16,8 @@ count = 0;
 while success:
     success,image = cap1.read()
 
-    b = cv2.resize(image,(640, 360),fx=0,fy=0, interpolation = cv2.INTER_CUBIC)
-    cv2.imwrite("imgFromVid1/frame%d.jpg" % count, b)     # save frame as JPEG file
+    resized_image = cv2.resize(image,(640, 360),fx=0,fy=0, interpolation = cv2.INTER_CUBIC)   #resize image
+    cv2.imwrite("imgFromVid1/frame%d.jpg" % count, resized_image)     # save frame as JPEG file
     if cv2.waitKey(10) == 27:                     # exit if Escape is hit
         break
     if count == length1-2:
@@ -28,8 +28,8 @@ success,image = cap2.read()
 count = 0;
 while success:
     success,image = cap2.read()
-    b = cv2.resize(image,(640, 360),fx=0,fy=0, interpolation = cv2.INTER_CUBIC)
-    cv2.imwrite("imgFromVid2/frame%d.jpg" % count, b)     # save frame as JPEG file
+    resized_image = cv2.resize(image,(640, 360),fx=0,fy=0, interpolation = cv2.INTER_CUBIC)   #resize image
+    cv2.imwrite("imgFromVid2/frame%d.jpg" % count, resized_image)     # save frame as JPEG file
     if cv2.waitKey(10) == 27:                     # exit if Escape is hit
         break
     if count == length2-2:
