@@ -106,3 +106,11 @@ venv.bak/
 .venv
 .idea/*
 .venv/*
+
+#ignore media files
+Ribath/imgFromVid1
+Ribath/imgFromVid2
+Ribath/processedImg
+Ribath/output.avi
+Ribath/vid1
+Ribath/vid2

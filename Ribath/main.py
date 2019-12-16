@@ -1,5 +1,4 @@
 import cv2
-from PIL import Image
 
 property_id = int(cv2.CAP_PROP_FRAME_COUNT)
 
@@ -36,23 +35,13 @@ while success:
         break
     count += 1
 
-img = cv2.imread('imgFromVid2/frame12.jpg')
-dimensions = img.shape
-print(dimensions)
-
-# im = Image.open('musk.jpg', 'r')
-# width, height = im.size
-# pixel_values = list(im.getdata())
-# print(pixel_values[width])
-
 countX = 0
 countY = 0
-# matrix = [[0]*640]*360
 matrix = []
-while countX<282:
+while countX<360:
     new = []
-    while countY<500:
-        if(countY%3==0):
+    while countY<640:
+        if(countY%2==0):
             new.append(1)
         else:
             new.append(0)
@@ -61,13 +50,26 @@ while countX<282:
     countY=0
     countX+=1
 
-# for z in range(192):
-img = cv2.imread('imgFromVid1/frame12.jpg')
-for x in range(282):
-    for y in range(500):
-        if(matrix[x][y]==1):
-            # sdf = img[x, y]
-            # print(sdf)
-            img[x,y]=(0,0,0)
+for z in range(133):
+    img1 = cv2.imread('imgFromVid1/frame%d.jpg'%z)
+    img2 = cv2.imread('imgFromVid2/frame%d.jpg'%z)
+    for x in range(360):
+        for y in range(640):
+            if(matrix[x][y]==1):
+                color = img2[x,y]
+                img1[x,y]=(color[0],color[1],color[2])
+    cv2.imwrite('processedImg/frame%d.jpg'%z, img1)
 
-cv2.imwrite('Test.jpg', img)
+
+img_array = []
+for i in range(132):
+    img = cv2.imread("processedImg/frame%d.jpg"%i)
+    height, width, layers = img.shape
+    size = (width,height)
+    img_array.append(img)
+
+out = cv2.VideoWriter('output.avi', cv2.VideoWriter_fourcc(*'DIVX'), 15, size)
+
+for i in range(132):
+    out.write(img_array[i])
+out.release()
