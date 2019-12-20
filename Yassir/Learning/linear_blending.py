@@ -15,10 +15,10 @@ print(''' Simple Linear Blender
 # if 0 <= alpha <= 1:
 #     alpha = input_alpha
 # [load]
-src1 = cv.imread('LinuxLogo.jpg')
+src1 = cv.imread('linearblendingimages//LinuxLogo.jpg')
 # print(src1)
 
-src2 = cv.imread('WindowsLogo.jpg')
+src2 = cv.imread('linearblendingimages//WindowsLogo.jpg')
 # print(src2)
 # [load]
 if src1 is None:
